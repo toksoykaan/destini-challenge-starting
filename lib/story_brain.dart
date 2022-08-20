@@ -3,6 +3,8 @@ import 'story.dart';
 
 //TODO: Step 5 - Create a new class called StoryBrain.
 class StoryBrain {
+  var storyPoint = 0;
+  int isSixOrFour = 6;
   List<Story> _storyData = [
     Story(
         storyTitle:
@@ -41,15 +43,51 @@ class StoryBrain {
 
 //TODO: Step 8 - Create a method called getStory() that returns the first storyTitle from _storyData.
   String getStory() {
-    return _storyData[0].storyTitle;
+    return _storyData[storyPoint].storyTitle;
   }
 
   String getChoice1() {
-    return _storyData[0].choice1;
+    return _storyData[storyPoint].choice1;
   }
 
   String getChoice2() {
-    return _storyData[0].choice2;
+    return _storyData[storyPoint].choice2;
+  }
+
+  void nextStory(int choiceNumber) {
+    if (choiceNumber == 1 && storyPoint == 0) {
+      storyPoint = 2;
+      return;
+    }
+    if (choiceNumber == 2 && storyPoint == 0) {
+      storyPoint = 1;
+      return;
+    }
+    if (storyPoint == 2 && choiceNumber == 1) {
+      storyPoint = 5;
+      return;
+    }
+    if (storyPoint == 2 && choiceNumber == 2 && isSixOrFour == 6) {
+      storyPoint = 6;
+      return;
+    }
+    if (storyPoint == 1 && choiceNumber == 1) {
+      storyPoint = 2;
+      isSixOrFour = 4;
+      return;
+    }
+    if (storyPoint == 1 && choiceNumber == 2) {
+      storyPoint = 4;
+      return;
+    }
+    if (storyPoint == 1 && choiceNumber == 1 && isSixOrFour == 4) {
+      storyPoint = 4;
+      return;
+    }
+    if (storyPoint == 3 || storyPoint == 4 || storyPoint == 5) {
+      storyPoint = 0;
+      return;
+    }
   }
 }
 
