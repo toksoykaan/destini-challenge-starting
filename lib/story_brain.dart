@@ -68,7 +68,7 @@ class StoryBrain {
       return;
     }
     if (storyPoint == 2 && choiceNumber == 2 && isSixOrFour == 6) {
-      storyPoint = 6;
+      storyPoint = 5;
       return;
     }
     if (storyPoint == 1 && choiceNumber == 1) {
@@ -87,6 +87,14 @@ class StoryBrain {
     if (storyPoint == 3 || storyPoint == 4 || storyPoint == 5) {
       storyPoint = 0;
       return;
+    }
+  }
+
+  bool buttonShouldBeVisible() {
+    if (storyPoint != 3 && storyPoint != 4 && storyPoint != 5) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
